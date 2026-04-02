@@ -31,5 +31,5 @@ AdminSchema.methods.comparePassword = async function (
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-export default mongoose.models.Admin ||
-  mongoose.model<IAdmin>("Admin", AdminSchema);
+const Admin = mongoose.models.Admin || mongoose.model<IAdmin>("Admin", AdminSchema);
+export default Admin as mongoose.Model<IAdmin>;
