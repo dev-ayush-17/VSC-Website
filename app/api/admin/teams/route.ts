@@ -24,8 +24,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   try {
-    await connectDB();
     const body = await request.json();
+    if (!body.name ||!body.role || !body.category) {
+      return NextResponse.json({ error: "Missing required fields: name, role, category" }, { status: 400 });
+    }
+    await connectDB();
     const member = await Team.create(body);
     return NextResponse.json(member, { status: 201 });
   } catch (error) {

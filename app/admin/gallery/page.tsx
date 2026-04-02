@@ -105,6 +105,9 @@ export default function AdminGalleryPage() {
         setToast({ message: "Item deleted", type: "success" });
         setDeleteTarget(null);
         fetchItems();
+      } else {
+        const errorText = await res.text();
+        setToast({ message: errorText || "Failed to delete item", type: "error" });
       }
     } catch {
       setToast({ message: "Network error", type: "error" });

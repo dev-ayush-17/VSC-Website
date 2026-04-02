@@ -143,10 +143,11 @@ export default function AdminTeamsPage() {
         setDeleteTarget(null);
         fetchMembers();
       } else {
-        setToast({ message: "Failed to delete", type: "error" });
+        const errorText = await res.text();
+        setToast({ message: errorText || "Failed to delete", type: "error" });
       }
-    } catch {
-      setToast({ message: "Network error", type: "error" });
+    } catch (err: any) {
+      setToast({ message: err?.message || "Network error", type: "error" });
     }
   };
 

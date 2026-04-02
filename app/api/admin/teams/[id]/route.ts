@@ -12,9 +12,15 @@ export async function PUT(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   try {
-    await connectDB();
     const { id } = await params;
+    if (!id) {
+      return NextResponse.json({ error: "Missing team member ID" }, { status: 400 });
+    }
     const body = await request.json();
+    if (!body.name || !body.role || !body.category) {
+      return NextResponse.json({ error: "Missing required fields: name, role, category" }, { status: 400 });
+    }
+    await connectDB();
     const member = await Team.findByIdAndUpdate(id, body, { new: true });
     if (!member) {
       return NextResponse.json({ error: "Team member not found" }, { status: 404 });

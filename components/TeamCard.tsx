@@ -92,7 +92,7 @@ export default function TeamCard({
               borderRadius: "16px",
             }}
           >
-            {name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+            {name.split(/\s+/).filter(Boolean).map(n => n[0].toUpperCase()).join("").slice(0, 2) || "?"}
           </div>
         )}
       </div>

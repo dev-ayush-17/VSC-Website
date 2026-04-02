@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-/* Standalone seed script — run with: node scripts/seed.mjs */
+/* Standalone seed script — run with: node scripts/seed.cjs */
 const mongoose = require("mongoose");
 
-const MONGODB_URI =
-  "mongodb+srv://anuragmishra3407_db_user:Eyd61iTbQPNhCCNj@vsc.qllxzs9.mongodb.net/vsc?appName=vsc";
+const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+  console.error("Fatal error: MONGODB_URI environment variable is missing.");
+  console.error("Please provide the MONGODB_URI to continue.");
+  console.error("For production, rotate the exposed DB credentials immediately and use a secrets manager.");
+  process.exit(1);
+}
 
 const TeamSchema = new mongoose.Schema(
   {

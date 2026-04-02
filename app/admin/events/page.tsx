@@ -82,10 +82,20 @@ export default function AdminEventsPage() {
 
   const openEdit = (event: EventItem) => {
     setEditing(event);
+    
+    let formattedDate = event.date;
+    try {
+      if (event.date) {
+        formattedDate = new Date(event.date).toISOString().slice(0, 10);
+      }
+    } catch (e) {
+      // ignore invalid dates
+    }
+
     setForm({
       title: event.title,
       description: event.description,
-      date: event.date,
+      date: formattedDate,
       venue: event.venue,
       image: event.image,
       category: event.category,
@@ -137,6 +147,9 @@ export default function AdminEventsPage() {
         setToast({ message: "Event deleted", type: "success" });
         setDeleteTarget(null);
         fetchEvents();
+      } else {
+        const errorText = await res.text();
+        setToast({ message: errorText || "Failed to delete item", type: "error" });
       }
     } catch {
       setToast({ message: "Network error", type: "error" });
