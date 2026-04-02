@@ -108,12 +108,13 @@ export default function Home() {
           <div className="hero__image-wrapper">
             <div className="hero__image-glow" />
             <Image
-              src="https://res.cloudinary.com/dq1fhihvx/image/upload/q_auto/f_auto/v1775078497/b968d728-a699-4a4d-9de6-87d76f2b86e3.png"
+              src="https://res.cloudinary.com/dq1fhihvx/image/upload/q_auto/f_auto/v1775134556/26853900-9fd1-4718-9029-8662a4dfa388.png"
               alt="Swami Vivekananda"
-              width={450}
-              height={550}
+              width={600}
+              height={700}
               className="hero__image"
-              priority
+              loading="eager"
+              style={{ width: "auto", height: "auto" }}
             />
           </div>
         </div>
@@ -125,11 +126,12 @@ export default function Home() {
           <div className="about-section__grid">
             <div className="about-section__image-side">
               <Image
-                src="/swami-vivekananda-hero.png"
+                src="https://res.cloudinary.com/dq1fhihvx/image/upload/q_auto/f_auto/v1775135102/swami-vivekananda-meditation_bdlplp.jpg"
                 alt="Swami Vivekananda"
-                width={450}
-                height={500}
+                width={550}
+                height={700}
                 className="about-section__image"
+                style={{ width: "auto", height: "auto" }}
               />
             </div>
             <div className="about-section__content">
@@ -213,6 +215,7 @@ export default function Home() {
                   src="https://res.cloudinary.com/dq1fhihvx/image/upload/q_auto/f_auto/v1775075848/db5c0b86-f41d-4b3d-8f14-d6a1f63abfef.png"
                   alt="Dr. Bhawani Shankar Das"
                   fill
+                  sizes="220px"
                   className="prof-section__image"
                 />
               </div>
@@ -303,6 +306,7 @@ export default function Home() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   className="gallery-section__img"
                 />
                 <div className="gallery-section__overlay">

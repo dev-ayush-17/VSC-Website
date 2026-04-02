@@ -62,17 +62,39 @@ export default function TeamCard({
   branch,
   socials,
 }: TeamCardProps) {
+  const safeImage = typeof image === "string" && image.trim().length > 0 ? image : null;
+
   return (
     <div className="team-card" id={`team-card-${name.replace(/\s/g, "-").toLowerCase()}`}>
       <div className="team-card__image-wrapper">
         <div className="team-card__image-glow" />
-        <Image
-          src={image}
-          alt={name}
-          width={280}
-          height={280}
-          className="team-card__image"
-        />
+        {safeImage ? (
+          <Image
+            src={safeImage}
+            alt={name}
+            width={280}
+            height={280}
+            className="team-card__image"
+          />
+        ) : (
+          <div
+            className="team-card__image"
+            style={{
+              width: 280,
+              height: 280,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "var(--bg-elevated)",
+              color: "var(--primary)",
+              fontSize: "3rem",
+              fontWeight: 700,
+              borderRadius: "16px",
+            }}
+          >
+            {name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+          </div>
+        )}
       </div>
 
       <div className="team-card__info">

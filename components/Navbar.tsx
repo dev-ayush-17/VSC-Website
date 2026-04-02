@@ -41,6 +41,7 @@ export default function Navbar() {
             width={45}
             height={45}
             className="navbar__logo-img"
+            loading="eager"
           />
           <div className="navbar__logo-text">
             <span className="navbar__logo-title">VSC</span>

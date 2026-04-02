@@ -107,9 +107,18 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vivekanand Study Circle, NIT
             Patna. All rights reserved.
           </p>
-          <p className="footer__credits">
-            Built with ❤️ by VSC Tech Team
-          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+            <p className="footer__credits">
+              Built with ❤️ by VSC Tech Team
+            </p>
+            <Link
+              href="/admin/login"
+              className="footer__link"
+              style={{ fontSize: "0.75rem", opacity: 0.5 }}
+            >
+              Admin
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
