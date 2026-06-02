@@ -10,10 +10,9 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { href: "#", label: "Instagram" },
-  { href: "#", label: "LinkedIn" },
-  { href: "#", label: "Twitter / X" },
-  { href: "#", label: "YouTube" },
+  { href: "https://www.instagram.com/vsc.nitpatna_official", label: "Instagram" },
+  { href: "https://www.linkedin.com/company/vivekanand-study-circle-nit-patna/", label: "LinkedIn" },
+
 ];
 
 export default function Footer() {
