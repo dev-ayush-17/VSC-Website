@@ -44,7 +44,7 @@ export default function TeamPage() {
       .then((data) => {
         if (data?.length) setTeam(data);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const professor = team.filter((m) => m.category === "professor");
@@ -114,12 +114,12 @@ export default function TeamPage() {
           </div>
         )}
 
-        {/* Leaders / Coordinators */}
-        {leaders.length > 0 && (
+        {/* Core Members */}
+        {coreMembers.length > 0 && (
           <div className="team-page__category">
-            <h3 className="team-page__category-title">Student Coordinators</h3>
+            <h3 className="team-page__category-title">Core Members</h3>
             <div className="team-page__grid">
-              {leaders.map((member) => (
+              {coreMembers.map((member) => (
                 <TeamCard
                   key={member._id}
                   name={member.name}
@@ -152,12 +152,12 @@ export default function TeamPage() {
           </div>
         )}
 
-        {/* Core Members */}
-        {coreMembers.length > 0 && (
+        {/* Leaders / Coordinators */}
+        {leaders.length > 0 && (
           <div className="team-page__category">
-            <h3 className="team-page__category-title">Core Members</h3>
+            <h3 className="team-page__category-title">Student Coordinators</h3>
             <div className="team-page__grid">
-              {coreMembers.map((member) => (
+              {leaders.map((member) => (
                 <TeamCard
                   key={member._id}
                   name={member.name}
@@ -170,6 +170,7 @@ export default function TeamPage() {
             </div>
           </div>
         )}
+
       </section>
     </>
   );

@@ -54,20 +54,20 @@ export default function Home() {
     fetch("/api/teams")
       .then((r) => r.json())
       .then((data) => { if (data?.length) setTeam(data); })
-      .catch(() => {});
+      .catch(() => { });
 
     fetch("/api/events")
       .then((r) => r.json())
       .then((data) => { if (data?.length) setEvents(data); })
-      .catch(() => {});
+      .catch(() => { });
 
     fetch("/api/gallery")
       .then((r) => r.json())
       .then((data) => { if (data?.length) setGallery(data); })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
-  const leaders = team.filter((m) => m.category === "leader").slice(0, 4);
+  const leaders = team.filter((m) => m.category === "core").slice(0, 4);
   const upcomingEvents = events.filter((e) => e.status === "upcoming").slice(0, 2);
   const galleryPreview = gallery.slice(0, 6);
 
